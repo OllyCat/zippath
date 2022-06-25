@@ -20,11 +20,8 @@ func Compress(p string, n string) (err error) {
 	z := zip.NewWriter(f)
 	defer z.Close()
 
-	// счётчик запакованных файлов
-	var count int
-
 	// проход по содержимому папки
-	err = filepath.Walk(n, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(p, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -53,8 +50,6 @@ func Compress(p string, n string) (err error) {
 		if e != nil {
 			return fmt.Errorf("Error copy file: %w", e)
 		}
-		// если всё хорошо - увеличим счётчик файлов
-		count++
 		return nil
 	})
 
