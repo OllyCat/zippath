@@ -1,3 +1,4 @@
+// Package zippath archive files to zip
 package zippath
 
 import (
@@ -8,6 +9,7 @@ import (
 	"path/filepath"
 )
 
+// Compress func: p - path, n - archive name
 func Compress(p string, n string) (err error) {
 	// создаём файл архива
 	f, err := os.Create(n)
